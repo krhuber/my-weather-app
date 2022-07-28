@@ -1,37 +1,48 @@
-//Homework Week 4 - Challenge 1
-
-function formatDate(date) {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  let AmOrPm = hours >= 12 ? "PM" : "AM";
+  hours = hours % 12 || 12;
+  let minutes = date.getMinutes();
+  let days = ["Sunday", "Monday", "Tuesday", "Thursday", "Friday", "Saturday"];
   let day = days[date.getDay()];
 
-  let hours = date.getHours();
-  if (hours < 10) {
-    hours = `0${hours}`;
-  }
-  let minutes = date.getMinutes();
-  if (minutes < 10) {
-    minutes = `0${minutes}`;
-  }
-
-  return `${day} ${hours}:${minutes}`;
+  return `${day} ${hours}:${minutes} ${AmOrPm}`;
 }
+//Homework Week 4 - Challenge 1
+//{
+//let days = [
+//  "Sunday",
+//  "Monday",
+//  "Tuesday",
+//  "Wednesday",
+//  "Thursday",
+//  "Friday",
+//  "Saturday",
+// ];
+// let day = days[date.getDay()];
 
-let dateElement = document.querySelector("#current-date-time");
-let currentTime = new Date();
+// let hours = date.getHours();
+// if (hours < 10) {
+//   hours = `0${hours}`;
+// }
+// let minutes = date.getMinutes();
+// if (minutes < 10) {
+//   minutes = `0${minutes}`;
+// }
 
-dateElement.innerHTML = formatDate(currentTime);
+// return `${day} ${hours}:${minutes}`;
+//  }
+
+//let dateElement = document.querySelector("#current-date-time");
+//let currentTime = new Date();
+
+//dateElement.innerHTML = formatDate(currentTime);
 
 //Homework Week 4 - Challenge 2
 
 function displayWeatherCondition(response) {
+  //console.log(response.data);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
@@ -41,11 +52,15 @@ function displayWeatherCondition(response) {
     response.data.wind.speed
   );
   document.querySelector("#description").innerHTML =
-    response.data.weather[0].main;
+    response.data.weather[0].description;
+
+  document.querySelector("#date").innerHTML = formatDate(
+    response.data.dt * 1000
+  );
 }
 
 function searchCity(city) {
-  let apiKey = "5d827921fe4993f40ead31e945d1df4e";
+  let apiKey = "84101301d1e855bff406380c1296fbbf";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayWeatherCondition);
 }
@@ -57,7 +72,7 @@ function handleSubmit(event) {
 }
 
 function searchLocation(position) {
-  let apiKey = "5d827921fe4993f40ead31e945d1df4e";
+  let apiKey = "84101301d1e855bff406380c1296fbbf";
   let apiUrl = ` https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayWeatherCondition);
 }
