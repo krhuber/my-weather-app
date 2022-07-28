@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!--Axios Link-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!--Axios Link-->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App v2</title>
+    <!--Bootstrap Style Sheet-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    />
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--MY CSS Style Sheet-->
+    <link rel="stylesheet" href="src/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Weather Forecast</h1>
+
+      <form id="search-form">
+        <div class="form-group">
+          <input
+            type="search"
+            class="search-bar"
+            id="city-input"
+            placeholder="Enter City"
+            autocomplete="off"
+            autofocus="off"
+          />
+          <input type="submit" class="btn" value="Search" />
+        </div>
+        <!--Week 5 Homework Bonus -->
+        <button class="button" id="current-location-button">Current</button>
+        <!--Week 5 Homework Bonus -->
+        <!--SheCodesPlus Homework Week 4-->
+        <p class="currentTime" id="current-date-time"></p>
+        <!--SheCodesPlus Homework Week 4-->
+      </form>
+      <div class="current-weather">
+        <div class="row">
+          <div class="col">
+            <h2 id="city" class="city"></h2>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <!--SheCodesPlus Homework Week 4-->
+            <h3>
+              <span class="temperature" id="temperature"></span>
+              <span class="units">
+                <a href="#" id="fahrenheit-link">°F </a> |
+                <a href="#" id="celsius-link">°C</a></span
+              >
+            </h3>
+            <ul>
+              <li id="description"></li>
+              <li>
+                Humidity:
+                <span id="humidity"></span>%
+              </li>
+              <li>
+                Wind:
+                <span id="wind"> </span>mph
+              </li>
+            </ul>
+
+            <!--SheCodesPlus Homework Week 4-->
+            <!--Hiding for now will update later 
+              <hr />
+            <h3 class="current-temp" id="current-temperature">84°F 🌦</h3>
+            <h3 class="current-condition">Mostly Sunny</h3>
+            <h3 class="current-high">High - 88°</h3>
+            <h3 class="current-low">Low - 71°</h3>-->
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <h2 class="forecast">7 Day Forecast</h2>
+      </div>
+
+      <div class="row weekday">
+        <div class="col">Mon</div>
+        <div class="col">Tues</div>
+        <div class="col">Wed</div>
+        <div class="col">Thurs</div>
+        <div class="col">Fri</div>
+        <div class="col">Sat</div>
+        <div class="col">Sun</div>
+      </div>
+
+      <div class="row icon">
+        <div class="col">🌦</div>
+        <div class="col">⛈</div>
+        <div class="col">☀️</div>
+        <div class="col">🌦</div>
+        <div class="col">☁️</div>
+        <div class="col">🌧</div>
+        <div class="col">☀️</div>
+      </div>
+
+      <div class="row high-temp">
+        <div class="col">High: 90°</div>
+        <div class="col">High: 95°</div>
+        <div class="col">High: 98°</div>
+        <div class="col">High: 93°</div>
+        <div class="col">High: 88°</div>
+        <div class="col">High: 97°</div>
+        <div class="col">High: 100°</div>
+      </div>
+
+      <div class="row low-temp">
+        <div class="col">Low: 75°</div>
+        <div class="col">Low: 82°</div>
+        <div class="col">Low: 85°</div>
+        <div class="col">Low: 88°</div>
+        <div class="col">Low: 80°</div>
+        <div class="col">Low: 89°</div>
+        <div class="col">Low: 85°</div>
+      </div>
+    </div>
+    <div class="source-code">
+      <a href="https://github.com/krhuber/weather-app-project" class="href">
+        Open-source code</a
+      >by Kathryn Huber
+    </div>
+    <br />
+    <script src="src/index.js"></script>
+  </body>
+</html>
